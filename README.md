@@ -2,6 +2,25 @@
 
 A production-ready, multi-tenant SaaS financial management system built with PHP/Laravel and React. Features enterprise-grade security, real-time updates, AI-powered analytics, and comprehensive financial management tools.
 
+## 🚀 Current Status
+
+**✅ Production Ready** - All critical issues resolved and system fully operational
+
+### Recent Updates (April 2026)
+- **Fixed Authentication Issues** - Resolved `/auth/me` 500 errors with improved error handling
+- **WebSocket Integration** - Real-time socket server running on port 3001
+- **Session Management** - Fixed forced logout on refresh, now preserves sessions properly
+- **API Interceptor** - Enhanced token retrieval with fallback mechanisms
+- **Health Monitoring** - All services passing health checks
+
+### Active Services
+- **API Server**: `http://localhost:8080` (Nginx + PHP-FPM)
+- **Frontend Dev Server**: `http://localhost:3000` (Vite + React)
+- **WebSocket Server**: `http://localhost:3001` (Socket.io + Node.js)
+- **MySQL Database**: `localhost:3306`
+- **Redis Cache**: `localhost:6379`
+- **Laravel Horizon**: Queue monitoring dashboard
+
 ## Features
 
 ### Core Features
@@ -85,6 +104,14 @@ app/
 
 ### Quick Start
 
+#### Option 1: Automated Setup (Windows)
+```batch
+# Run the provided batch file
+QUICK_START.bat
+```
+
+#### Option 2: Manual Setup
+
 1. **Clone the repository**
 ```bash
 git clone https://github.com/your-org/finance-analyser.git
@@ -95,6 +122,7 @@ cd finance-analyser
 ```bash
 cp .env.example .env
 php artisan key:generate
+php artisan jwt:secret
 ```
 
 3. **Start Docker containers**
@@ -106,6 +134,8 @@ docker-compose up -d
 ```bash
 composer install
 npm install
+cd frontend && npm install && cd ..
+cd socket-server && npm install && cd ..
 ```
 
 5. **Run migrations and seeders**
@@ -114,20 +144,69 @@ php artisan migrate
 php artisan db:seed
 ```
 
-6. **Generate JWT secret**
+6. **Start development servers**
 ```bash
-php artisan jwt:secret
+# Terminal 1: Frontend
+cd frontend && npm run dev
+
+# Terminal 2: Socket Server
+cd socket-server && npm run dev
+
+# Terminal 3: Queue Workers
+php artisan queue:work
 ```
 
-7. **Build frontend assets**
+7. **Access the application**
+- **Frontend**: http://localhost:3000
+- **API**: http://localhost:8080/api
+- **WebSocket**: http://localhost:3001
+- **API Documentation**: http://localhost:8080/api/docs
+- **Horizon Dashboard**: http://localhost:8080/horizon
+
+### Development Commands
+
+#### Backend
 ```bash
+# Run tests
+php artisan test
+
+# Clear caches
+php artisan optimize:clear
+
+# Queue management
+php artisan queue:work
+php artisan horizon
+
+# Database operations
+php artisan migrate:fresh --seed
+php artisan db:seed --class=RolePermissionSeeder
+```
+
+#### Frontend
+```bash
+# Development server
+npm run dev
+
+# Build for production
 npm run build
+
+# Code quality
+npm run lint
+npm run format
+npm run type-check
 ```
 
-8. **Access the application**
-- API: http://localhost:8080/api
-- Frontend: http://localhost:3000
-- Documentation: http://localhost:8080/api/docs
+#### Socket Server
+```bash
+# Development
+npm run dev
+
+# Production
+npm run start
+
+# Health check
+curl http://localhost:3001/health
+```
 
 ## API Documentation
 
@@ -313,6 +392,139 @@ docker-compose exec app php artisan view:cache
 - CPU utilization tracking
 - Error rate monitoring
 
+## Troubleshooting
+
+### Common Issues
+
+#### Authentication Errors
+```bash
+# Clear JWT cache
+php artisan cache:clear
+php artisan config:clear
+
+# Regenerate JWT secret
+php artisan jwt:secret
+```
+
+#### WebSocket Connection Issues
+```bash
+# Check socket server status
+curl http://localhost:3001/health
+
+# Restart socket server
+cd socket-server && npm run dev
+```
+
+#### Database Connection Issues
+```bash
+# Check MySQL container
+docker-compose logs mysql
+
+# Restart database
+docker-compose restart mysql
+
+# Reset database
+php artisan migrate:fresh --seed
+```
+
+#### Frontend Build Issues
+```bash
+# Clear node modules
+rm -rf frontend/node_modules
+cd frontend && npm install
+
+# Clear Vite cache
+npm run build -- --force
+```
+
+### Health Checks
+```bash
+# API Health
+curl http://localhost:8080/health
+
+# Database Health
+docker-compose exec mysql mysqladmin ping
+
+# Redis Health
+docker-compose exec redis redis-cli ping
+
+# All Services Status
+docker-compose ps
+```
+
+## Project Structure
+
+```
+Finance Analyser/
+├── app/                     # Laravel application code
+│   ├── Http/Controllers/    # API controllers
+│   ├── Models/             # Eloquent models
+│   ├── Services/           # Business logic
+│   └── Jobs/               # Background jobs
+├── frontend/               # React frontend
+│   ├── src/
+│   │   ├── components/     # React components
+│   │   ├── hooks/          # Custom hooks
+│   │   ├── services/       # API services
+│   │   └── lib/            # Utilities
+│   └── public/             # Static assets
+├── socket-server/          # WebSocket server
+│   ├── src/                # Socket.io server code
+│   └── package.json        # Node.js dependencies
+├── docker/                 # Docker configurations
+│   ├── nginx/              # Nginx config
+│   ├── mysql/              # MySQL config
+│   └── php/                # PHP-FPM config
+├── database/               # Database files
+│   ├── migrations/         # Database migrations
+│   └── seeders/           # Database seeders
+├── routes/                 # API routes
+├── config/                 # Laravel configuration
+└── storage/               # Application storage
+```
+
+## Environment Variables
+
+### Key Configuration
+```env
+# Application
+APP_NAME="Finance Analyser"
+APP_ENV=local
+APP_DEBUG=true
+APP_URL=http://localhost:8080
+
+# Database
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=finance_analyser
+DB_USERNAME=finance_user
+DB_PASSWORD=secret
+
+# JWT
+JWT_SECRET=your_jwt_secret_here
+JWT_TTL=60
+JWT_REFRESH_TTL=20160
+
+# Redis
+REDIS_HOST=redis
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+# Mail
+MAIL_MAILER=smtp
+MAIL_HOST=mailhog
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
+
+# WebSocket
+SOCKET_SERVER_URL=http://localhost:3001
+```
+
 ## Support
 
 ### Documentation
@@ -320,6 +532,8 @@ docker-compose exec app php artisan view:cache
 - [User Guide](/docs/user-guide.md)
 - [Developer Guide](/docs/developer-guide.md)
 - [Deployment Guide](/docs/deployment.md)
+- [Local Setup Guide](LOCAL_SETUP.md)
+- [Production Deployment](PRODUCTION_DEPLOYMENT.md)
 
 ### Community
 - [GitHub Issues](https://github.com/your-org/finance-analyser/issues)
@@ -334,3 +548,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Finance Analyser** - Enterprise Financial Management Made Simple
 
 Built with enterprise-grade security, scalability, and performance in mind. Perfect for businesses of all sizes.
+
+🚀 **Version 1.0.0** - Production Ready with Real-time Features
