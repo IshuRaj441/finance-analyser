@@ -1,0 +1,100 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: finance-analyser-app
+    restart: unless-stopped
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    ports:
+      - "8000:9000"
+    networks:
+      - finance-network
+    depends_on:
+      - mysql
+      - redis
+    environment:
+      - APP_ENV=local
+
+  nginx:
+    image: nginx:alpine
+    container_name: finance-analyser-nginx
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      - finance-network
+    depends_on:
+      - app
+
+  mysql:
+    image: mysql:8.0
+    container_name: finance-analyser-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: finance_analyser
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_PASSWORD: secret
+      MYSQL_USER: finance_user
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+    ports:
+      - "3306:3306"
+    networks:
+      - finance-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: finance-analyser-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - finance-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: finance-analyser-phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: root
+    networks:
+      - finance-network
+    depends_on:
+      - mysql
+
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: finance-analyser-redis-commander
+    restart: unless-stopped
+    ports:
+      - "8082:8081"
+    environment:
+      REDIS_HOSTS: local:redis:6379
+    networks:
+      - finance-network
+    depends_on:
+      - redis
+
+volumes:
+  mysql_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  finance-network:
+    driver: bridge
