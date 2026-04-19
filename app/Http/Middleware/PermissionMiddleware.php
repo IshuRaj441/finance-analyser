@@ -16,7 +16,7 @@ class PermissionMiddleware
      */
     public function handle(Request $request, Closure $next, string $permission): Response
     {
-        $user = Auth::guard('api')->user();
+        $user = $request->user();
 
         if (!$user) {
             return response()->json([

@@ -17,6 +17,7 @@ use App\Http\Controllers\BackupController;
 use App\Http\Controllers\IntegrationController;
 use App\Http\Controllers\FraudAlertController;
 use App\Http\Controllers\HealthController;
+use App\Http\Controllers\AIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -147,10 +148,12 @@ Route::prefix('v1')->group(function () {
 
         // AI Features
         Route::middleware(['permission:use_ai_features'])->group(function () {
-            Route::post('/ai/chat', [DashboardController::class, 'aiChat']);
-            Route::post('/ai/analyze', [DashboardController::class, 'aiAnalyze']);
-            Route::post('/ai/predict', [DashboardController::class, 'aiPredict']);
-            Route::post('/ai/recommendations', [DashboardController::class, 'aiRecommendations']);
+            Route::post('/ai/chat', [AIController::class, 'chat']);
+            Route::post('/ai/analyze-spending', [AIController::class, 'analyzeSpending']);
+            Route::post('/ai/predict-spending', [AIController::class, 'predictSpending']);
+            Route::post('/ai/budget-recommendations', [AIController::class, 'budgetRecommendations']);
+            Route::post('/ai/risk-analysis', [AIController::class, 'riskAnalysis']);
+            Route::get('/ai/capabilities', [AIController::class, 'capabilities']);
         });
 
         // Settings

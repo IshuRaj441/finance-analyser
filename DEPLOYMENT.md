@@ -101,8 +101,8 @@ PUSHER_HOST=your-push-host
 PUSHER_PORT=443
 PUSHER_SCHEME=https
 
-# OpenAI
-OPENAI_API_KEY=your_openai_api_key
+# OpenRouter
+OPENROUTER_API_KEY=your_openrouter_api_key
 
 # Payment Gateways
 STRIPE_KEY=your_stripe_key

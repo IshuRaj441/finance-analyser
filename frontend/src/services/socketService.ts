@@ -33,8 +33,12 @@ class SocketService {
           token: token
         },
         transports: ['websocket', 'polling'],
-        timeout: 10000,
-        forceNew: true
+        timeout: 20000,
+        forceNew: true,
+        reconnection: true,
+        reconnectionAttempts: 5,
+        reconnectionDelay: 1000,
+        reconnectionDelayMax: 5000
       });
 
       this.socket.on('connect', () => {

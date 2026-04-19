@@ -29,10 +29,10 @@ return [
         ],
     ],
 
-    // OpenAI Configuration
-    'openai' => [
-        'api_key' => env('OPENAI_API_KEY'),
-        'organization' => env('OPENAI_ORGANIZATION'),
+    // OpenRouter Configuration
+    'openrouter' => [
+        'api_key' => env('OPENROUTER_API_KEY'),
+        'organization' => env('OPENROUTER_ORGANIZATION'),
     ],
 
     // Socket.io Configuration

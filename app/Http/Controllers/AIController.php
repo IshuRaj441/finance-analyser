@@ -31,7 +31,16 @@ class AIController extends Controller
             return $this->success($result, 'AI response generated successfully');
         }
 
-        return $this->error($result['error'] ?? 'AI service unavailable', 503);
+        $errorMessage = $result['error'] ?? 'AI service unavailable';
+        $statusCode = 503;
+        
+        // Check if it's a quota issue
+        if (strpos($errorMessage, 'quota') !== false || strpos($errorMessage, 'insufficient_quota') !== false) {
+            $errorMessage = 'AI service quota exceeded. Please check your OpenRouter billing.';
+            $statusCode = 429;
+        }
+        
+        return $this->error($errorMessage, $statusCode);
     }
 
     public function analyzeSpending(AIAnalysisRequest $request): JsonResponse

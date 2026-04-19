@@ -1,7 +1,11 @@
 {
   "css.validate": false,
   "tailwindCSS.includeLanguages": {
-    "css": "css"
+    "css": "css",
+    "javascript": "javascript",
+    "typescript": "typescript",
+    "javascriptreact": "javascriptreact",
+    "typescriptreact": "typescriptreact"
   },
   "tailwindCSS.experimental.classRegex": [],
   "editor.quickSuggestions": {
@@ -9,5 +13,8 @@
   },
   "files.associations": {
     "*.css": "tailwindcss"
-  }
+  },
+  "tailwindCSS.validate": true,
+  "scss.validate": false,
+  "less.validate": false
 }

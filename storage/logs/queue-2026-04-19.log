@@ -1,0 +1,92 @@
+[2026-04-19 17:10:35] local.ERROR: array_column(): Argument #1 ($array) must be of type array, Illuminate\Database\Eloquent\Collection given {"exception":"[object] (TypeError(code: 0): array_column(): Argument #1 ($array) must be of type array, Illuminate\\Database\\Eloquent\\Collection given at /var/www/html/test_api_response.php:38)
+[stacktrace]
+#0 /var/www/html/test_api_response.php(38): array_column(Object(Illuminate\\Database\\Eloquent\\Collection), 'name')
+#1 {main}
+"} 
+[2026-04-19 17:29:54] local.ERROR: Class "ZipArchive" not found {"exception":"[object] (Error(code: 0): Class \"ZipArchive\" not found at D:/PROJECTS/Finance Analyser/vendor/spatie/laravel-backup/config/backup.php:133)
+[stacktrace]
+#0 D:/PROJECTS/Finance Analyser/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php(163): require()
+#1 D:/PROJECTS/Finance Analyser/vendor/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessConfigs.php(23): Illuminate/Support/ServiceProvider->mergeConfigFrom('D://PROJECTS//Fin...', 'backup')
+#2 D:/PROJECTS/Finance Analyser/vendor/spatie/laravel-package-tools/src/PackageServiceProvider.php(53): Spatie/LaravelPackageTools/PackageServiceProvider->registerPackageConfigs()
+#3 D:/PROJECTS/Finance Analyser/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(896): Spatie/LaravelPackageTools/PackageServiceProvider->register()
+#4 D:/PROJECTS/Finance Analyser/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php(75): Illuminate/Foundation/Application->register(Object(Spatie/Backup/BackupServiceProvider))
+#5 D:/PROJECTS/Finance Analyser/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(871): Illuminate/Foundation/ProviderRepository->load(Array)
+#6 D:/PROJECTS/Finance Analyser/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php(37): Illuminate/Foundation/Application->registerConfiguredProviders()
+#7 D:/PROJECTS/Finance Analyser/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(342): Illuminate/Foundation/Bootstrap/RegisterProviders->bootstrap(Object(Illuminate/Foundation/Application))
+#8 D:/PROJECTS/Finance Analyser/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(474): Illuminate/Foundation/Application->bootstrapWith(Array)
+#9 D:/PROJECTS/Finance Analyser/fix_ai_permissions.php(7): Illuminate/Foundation/Console/Kernel->bootstrap()
+#10 {main}
+"} 
+[2026-04-19 17:33:33] local.ERROR: Class "ZipArchive" not found {"exception":"[object] (Error(code: 0): Class \"ZipArchive\" not found at D:/PROJECTS/Finance Analyser/vendor/spatie/laravel-backup/config/backup.php:133)
+[stacktrace]
+#0 D:/PROJECTS/Finance Analyser/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php(163): require()
+#1 D:/PROJECTS/Finance Analyser/vendor/spatie/laravel-package-tools/src/Concerns/PackageServiceProvider/ProcessConfigs.php(23): Illuminate/Support/ServiceProvider->mergeConfigFrom('D://PROJECTS//Fin...', 'backup')
+#2 D:/PROJECTS/Finance Analyser/vendor/spatie/laravel-package-tools/src/PackageServiceProvider.php(53): Spatie/LaravelPackageTools/PackageServiceProvider->registerPackageConfigs()
+#3 D:/PROJECTS/Finance Analyser/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(896): Spatie/LaravelPackageTools/PackageServiceProvider->register()
+#4 D:/PROJECTS/Finance Analyser/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php(75): Illuminate/Foundation/Application->register(Object(Spatie/Backup/BackupServiceProvider))
+#5 D:/PROJECTS/Finance Analyser/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(871): Illuminate/Foundation/ProviderRepository->load(Array)
+#6 D:/PROJECTS/Finance Analyser/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php(37): Illuminate/Foundation/Application->registerConfiguredProviders()
+#7 D:/PROJECTS/Finance Analyser/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(342): Illuminate/Foundation/Bootstrap/RegisterProviders->bootstrap(Object(Illuminate/Foundation/Application))
+#8 D:/PROJECTS/Finance Analyser/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(474): Illuminate/Foundation/Application->bootstrapWith(Array)
+#9 D:/PROJECTS/Finance Analyser/fix_ai_permissions.php(7): Illuminate/Foundation/Console/Kernel->bootstrap()
+#10 {main}
+"} 
+[2026-04-19 17:35:24] local.ERROR: There is no permission named `api` for guard `web`. {"exception":"[object] (Spatie\\Permission\\Exceptions\\PermissionDoesNotExist(code: 0): There is no permission named `api` for guard `web`. at /var/www/html/vendor/spatie/laravel-permission/src/Exceptions/PermissionDoesNotExist.php:11)
+[stacktrace]
+#0 /var/www/html/vendor/spatie/laravel-permission/src/Models/Permission.php(97): Spatie\\Permission\\Exceptions\\PermissionDoesNotExist::create('api', 'web')
+#1 /var/www/html/vendor/spatie/laravel-permission/src/Traits/HasPermissions.php(508): Spatie\\Permission\\Models\\Permission::findByName('api', 'web')
+#2 /var/www/html/vendor/spatie/laravel-permission/src/Traits/HasPermissions.php(375): App\\Models\\User->getStoredPermission('api')
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Collections/Traits/EnumeratesValues.php(822): App\\Models\\User->Spatie\\Permission\\Traits\\{closure}(Array, 'api', 1)
+#4 /var/www/html/vendor/spatie/laravel-permission/src/Traits/HasPermissions.php(370): Illuminate\\Support\\Collection->reduce(Object(Closure), Array)
+#5 /var/www/html/vendor/spatie/laravel-permission/src/Traits/HasPermissions.php(397): App\\Models\\User->collectPermissions(Array)
+#6 /var/www/html/fix_ai_permissions.php(61): App\\Models\\User->givePermissionTo('use_ai_features', 'api')
+#7 {main}
+"} 
+[2026-04-19 17:36:51] local.ERROR: PHP Parse error: Syntax error, unexpected T_NS_SEPARATOR on line 1 {"exception":"[object] (Psy\\Exception\\ParseErrorException(code: 0): PHP Parse error: Syntax error, unexpected T_NS_SEPARATOR on line 1 at /var/www/html/vendor/psy/psysh/src/Exception/ParseErrorException.php:44)
+[stacktrace]
+#0 /var/www/html/vendor/psy/psysh/src/CodeCleaner.php(657): Psy\\Exception\\ParseErrorException::fromParseError(Object(PhpParser\\Error))
+#1 /var/www/html/vendor/psy/psysh/src/CodeCleaner.php(273): Psy\\CodeCleaner->parse('<?php  \\\\ = App\\\\...', false)
+#2 /var/www/html/vendor/psy/psysh/src/Shell.php(1358): Psy\\CodeCleaner->clean(Array, false)
+#3 /var/www/html/vendor/psy/psysh/src/Shell.php(1465): Psy\\Shell->appendCode(' \\\\ = App\\\\Models...', true, false)
+#4 /var/www/html/vendor/psy/psysh/src/Shell.php(2173): Psy\\Shell->setCode(' \\\\ = App\\\\Models...', true)
+#5 /var/www/html/vendor/laravel/tinker/src/Console/TinkerCommand.php(77): Psy\\Shell->execute(' \\\\ = App\\\\Models...')
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Laravel\\Tinker\\Console\\TinkerCommand->handle()
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Container/Container.php(696): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate\\Container\\Container->call(Array)
+#12 /var/www/html/vendor/symfony/console/Command/Command.php(341): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#13 /var/www/html/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#14 /var/www/html/vendor/symfony/console/Application.php(1117): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#15 /var/www/html/vendor/symfony/console/Application.php(356): Symfony\\Component\\Console\\Application->doRunCommand(Object(Laravel\\Tinker\\Console\\TinkerCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#16 /var/www/html/vendor/symfony/console/Application.php(195): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#17 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#18 /var/www/html/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#19 {main}
+"} 
+[2026-04-19 17:37:35] local.ERROR: Symfony\Component\HttpFoundation\Request::__construct(): Argument #1 ($query) must be of type array, Illuminate\Http\Request given, called in /var/www/html/test_api_endpoint.php on line 42 {"exception":"[object] (TypeError(code: 0): Symfony\\Component\\HttpFoundation\\Request::__construct(): Argument #1 ($query) must be of type array, Illuminate\\Http\\Request given, called in /var/www/html/test_api_endpoint.php on line 42 at /var/www/html/vendor/symfony/http-foundation/Request.php:242)
+[stacktrace]
+#0 /var/www/html/test_api_endpoint.php(42): Symfony\\Component\\HttpFoundation\\Request->__construct(Object(Illuminate\\Http\\Request))
+#1 {main}
+"} 
+[2026-04-19 17:38:15] local.ERROR: App\Services\AIService::chatWithAI(): Argument #1 ($user) must be of type App\Models\User, null given, called in /var/www/html/app/Http/Controllers/AIController.php on line 28 {"exception":"[object] (TypeError(code: 0): App\\Services\\AIService::chatWithAI(): Argument #1 ($user) must be of type App\\Models\\User, null given, called in /var/www/html/app/Http/Controllers/AIController.php on line 28 at /var/www/html/app/Services/AIService.php:24)
+[stacktrace]
+#0 /var/www/html/app/Http/Controllers/AIController.php(28): App\\Services\\AIService->chatWithAI(NULL, 'What is 2+2?')
+#1 /var/www/html/test_api_endpoint.php(41): App\\Http\\Controllers\\AIController->chat(Object(App\\Http\\Requests\\AIChatRequest))
+#2 {main}
+"} 
+[2026-04-19 17:55:27] local.ERROR: The given role or permission should use guard `api` instead of `api`. {"exception":"[object] (Spatie\\Permission\\Exceptions\\GuardDoesNotMatch(code: 0): The given role or permission should use guard `api` instead of `api`. at /var/www/html/vendor/spatie/laravel-permission/src/Exceptions/GuardDoesNotMatch.php:12)
+[stacktrace]
+#0 /var/www/html/vendor/spatie/laravel-permission/src/Models/Role.php(206): Spatie\\Permission\\Exceptions\\GuardDoesNotMatch::create('api', Object(Illuminate\\Support\\Collection))
+#1 /var/www/html/fix_role_permissions.php(31): Spatie\\Permission\\Models\\Role->hasPermissionTo(Object(Spatie\\Permission\\Models\\Permission), 'api')
+#2 {main}
+"} 
+[2026-04-19 18:00:12] local.ERROR: OpenAI API error {"status":429,"response":{"error":{"message":"You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.","type":"insufficient_quota","param":null,"code":"insufficient_quota"}}} 
+[2026-04-19 18:03:38] local.ERROR: OpenAI API error {"status":429,"response":{"error":{"message":"You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.","type":"insufficient_quota","param":null,"code":"insufficient_quota"}}} 
+[2026-04-19 18:09:14] local.ERROR: OpenAI API error {"status":429,"response":{"error":{"message":"You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.","type":"insufficient_quota","param":null,"code":"insufficient_quota"}}} 
+[2026-04-19 19:04:40] local.ERROR: OpenAI API error {"status":429,"response":{"error":{"message":"You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.","type":"insufficient_quota","param":null,"code":"insufficient_quota"}}} 
+[2026-04-19 19:05:08] local.ERROR: OpenAI API error {"status":429,"response":{"error":{"message":"You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.","type":"insufficient_quota","param":null,"code":"insufficient_quota"}}} 
+[2026-04-19 19:06:08] local.ERROR: OpenAI API error {"status":429,"response":{"error":{"message":"You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.","type":"insufficient_quota","param":null,"code":"insufficient_quota"}}} 
+[2026-04-19 19:06:47] local.ERROR: OpenAI API error {"status":429,"response":{"error":{"message":"You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.","type":"insufficient_quota","param":null,"code":"insufficient_quota"}}} 
+[2026-04-19 19:14:41] local.ERROR: OpenAI API error {"status":401,"response":{"error":{"message":"Incorrect API key provided: sk-or-v1*************************************************************2232. You can find your API key at https://platform.openai.com/account/api-keys.","type":"invalid_request_error","code":"invalid_api_key","param":null},"status":401}} 

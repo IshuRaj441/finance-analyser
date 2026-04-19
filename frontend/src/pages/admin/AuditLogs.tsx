@@ -13,7 +13,6 @@ import {
   RefreshCw
 } from 'lucide-react';
 import { api } from '../../lib/api';
-import { useAuthStore } from '../../stores/authStore';
 
 interface AuditLog {
   id: number;
@@ -44,7 +43,6 @@ interface Filters {
 }
 
 const AuditLogs: React.FC = () => {
-  const { user } = useAuthStore();
   const [logs, setLogs] = useState<AuditLog[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);

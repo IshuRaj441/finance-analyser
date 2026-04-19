@@ -302,7 +302,7 @@ const ReportGenerator: React.FC<ReportGeneratorProps> = ({ onReportGenerated }) 
                         onClick={() => setIncludeCharts(!includeCharts)}
                         className={`
                           relative inline-flex h-6 w-11 items-center rounded-full transition-colors
-                          ${includeCharts ? 'bg-primary-600' : 'bg-surface-200'
+                          ${includeCharts ? 'bg-primary-600' : 'bg-surface-200'}
                         `}
                       >
                         <span
@@ -323,7 +323,7 @@ const ReportGenerator: React.FC<ReportGeneratorProps> = ({ onReportGenerated }) 
                         onClick={() => setIncludeDetails(!includeDetails)}
                         className={`
                           relative inline-flex h-6 w-11 items-center rounded-full transition-colors
-                          ${includeDetails ? 'bg-primary-600' : 'bg-surface-200'
+                          ${includeDetails ? 'bg-primary-600' : 'bg-surface-200'}
                         `}
                       >
                         <span

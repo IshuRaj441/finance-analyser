@@ -17,8 +17,8 @@ class AIService
 
     public function __construct()
     {
-        $this->apiKey = config('services.openai.api_key');
-        $this->baseUrl = 'https://api.openai.com/v1';
+        $this->apiKey = config('services.openrouter.api_key');
+        $this->baseUrl = 'https://openrouter.ai/api/v1';
     }
 
     public function chatWithAI(User $user, string $message): array
@@ -32,7 +32,7 @@ class AIService
                 'Authorization' => "Bearer {$this->apiKey}",
                 'Content-Type' => 'application/json',
             ])->post("{$this->baseUrl}/chat/completions", [
-                'model' => 'gpt-3.5-turbo',
+                'model' => 'openai/gpt-3.5-turbo',
                 'messages' => [
                     [
                         'role' => 'system',
@@ -56,14 +56,21 @@ class AIService
                 ];
             }
 
-            Log::error('OpenAI API error', [
+            Log::error('OpenRouter API error', [
                 'status' => $response->status(),
                 'response' => $response->json(),
             ]);
 
+            $errorMsg = 'AI service temporarily unavailable';
+            $responseData = $response->json();
+            
+            if (isset($responseData['error']['message'])) {
+                $errorMsg = $responseData['error']['message'];
+            }
+            
             return [
                 'success' => false,
-                'error' => 'AI service temporarily unavailable',
+                'error' => $errorMsg,
             ];
 
         } catch (\Exception $e) {
@@ -99,7 +106,7 @@ class AIService
                 'Authorization' => "Bearer {$this->apiKey}",
                 'Content-Type' => 'application/json',
             ])->post("{$this->baseUrl}/chat/completions", [
-                'model' => 'gpt-3.5-turbo',
+                'model' => 'openai/gpt-3.5-turbo',
                 'messages' => [
                     [
                         'role' => 'system',
@@ -171,7 +178,7 @@ class AIService
                 'Authorization' => "Bearer {$this->apiKey}",
                 'Content-Type' => 'application/json',
             ])->post("{$this->baseUrl}/chat/completions", [
-                'model' => 'gpt-3.5-turbo',
+                'model' => 'openai/gpt-3.5-turbo',
                 'messages' => [
                     [
                         'role' => 'system',
@@ -244,7 +251,7 @@ class AIService
                 'Authorization' => "Bearer {$this->apiKey}",
                 'Content-Type' => 'application/json',
             ])->post("{$this->baseUrl}/chat/completions", [
-                'model' => 'gpt-3.5-turbo',
+                'model' => 'openai/gpt-3.5-turbo',
                 'messages' => [
                     [
                         'role' => 'system',
@@ -305,7 +312,7 @@ class AIService
                 'Authorization' => "Bearer {$this->apiKey}",
                 'Content-Type' => 'application/json',
             ])->post("{$this->baseUrl}/chat/completions", [
-                'model' => 'gpt-3.5-turbo',
+                'model' => 'openai/gpt-3.5-turbo',
                 'messages' => [
                     [
                         'role' => 'system',

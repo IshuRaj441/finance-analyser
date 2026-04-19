@@ -92,7 +92,8 @@ class RolePermissionSeeder extends Seeder
         ];
 
         foreach ($permissions as $permission) {
-            Permission::firstOrCreate(['name' => $permission]);
+            Permission::firstOrCreate(['name' => $permission, 'guard_name' => 'web']);
+            Permission::firstOrCreate(['name' => $permission, 'guard_name' => 'api']);
         }
 
         $roles = [
@@ -155,6 +156,7 @@ class RolePermissionSeeder extends Seeder
                 'view_report',
                 'download_file',
                 'view_dashboard',
+                'use_ai_features', 'view_ai_insights',
             ],
         ];
 
